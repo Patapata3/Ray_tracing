@@ -46,29 +46,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Patterns\Chessboard.cs" />
-    <Compile Include="ColorHandler.cs" />
+    <Compile Include="Handlers\ColorHandler.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IPattern.cs" />
-    <Compile Include="Light.cs" />
-    <Compile Include="Material.cs" />
-    <Compile Include="MatrixHandler.cs" />
-    <Compile Include="Point.cs" />
+    <Compile Include="Interfaces\IPattern.cs" />
+    <Compile Include="SceneElements\Light.cs" />
+    <Compile Include="SceneElements\Material.cs" />
+    <Compile Include="Handlers\MatrixHandler.cs" />
+    <Compile Include="Geometry\Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IShape.cs" />
-    <Compile Include="Ray.cs" />
-    <Compile Include="ReferenceFrame.cs" />
-    <Compile Include="Scene.cs" />
-    <Compile Include="SceneObject.cs" />
+    <Compile Include="Interfaces\IShape.cs" />
+    <Compile Include="Geometry\Ray.cs" />
+    <Compile Include="Geometry\ReferenceFrame.cs" />
+    <Compile Include="SceneElements\Scene.cs" />
+    <Compile Include="SceneElements\SceneObject.cs" />
     <Compile Include="Patterns\SimplePattern.cs" />
-    <Compile Include="Sphere.cs" />
-    <Compile Include="Plane.cs" />
-    <Compile Include="Vector.cs" />
+    <Compile Include="Shapes\Sphere.cs" />
+    <Compile Include="Shapes\Plane.cs" />
+    <Compile Include="Geometry\Vector.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

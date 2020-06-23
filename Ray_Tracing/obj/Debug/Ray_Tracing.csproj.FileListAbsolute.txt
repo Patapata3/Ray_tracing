@@ -7,3 +7,13 @@ C:\Users\Free\source\repos\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.csproj.
 C:\Users\Free\source\repos\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.exe
 C:\Users\Free\source\repos\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.pdb
 C:\Users\Free\source\repos\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.csprojAssemblyReference.cache
+D:\Projects\Ray_Tracing\Ray_Tracing\bin\Debug\Ray_Tracing.exe.config
+D:\Projects\Ray_Tracing\Ray_Tracing\bin\Debug\Ray_Tracing.exe
+D:\Projects\Ray_Tracing\Ray_Tracing\bin\Debug\Ray_Tracing.pdb
+D:\Projects\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.csprojAssemblyReference.cache
+D:\Projects\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.Form1.resources
+D:\Projects\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.Properties.Resources.resources
+D:\Projects\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.csproj.GenerateResource.cache
+D:\Projects\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.csproj.CoreCompileInputs.cache
+D:\Projects\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.exe
+D:\Projects\Ray_Tracing\Ray_Tracing\obj\Debug\Ray_Tracing.pdb

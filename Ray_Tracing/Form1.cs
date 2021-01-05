@@ -53,13 +53,24 @@ namespace Ray_Tracing
             var pictureData = picture.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, picture.PixelFormat);
             int byteNum = Math.Abs(pictureData.Stride) * picture.Height;
             byte[] rgbValues = new byte[byteNum];
-            Marshal.Copy(pictureData.Scan0, rgbValues, 0, byteNum);
-            Task[] taskArray = { Task.Factory.StartNew(() => scene.Draw(0, width / 2, 0, height / 2, picture.Height, picture.Width, ref rgbValues)),
-                                Task.Factory.StartNew(() => scene.Draw(width / 2, width, 0, height / 2, picture.Height, picture.Width, ref rgbValues)),
-                                Task.Factory.StartNew(() => scene.Draw(0, width / 2, height / 2, height, picture.Height, picture.Width, ref rgbValues)),
-                                Task.Factory.StartNew(() => scene.Draw(width / 2, width, height / 2, height,picture.Height, picture.Width, ref rgbValues))};
 
-            foreach(var task in taskArray)
+            int horizontalBlocks = 4;
+            int verticalBlocks = 4;
+            Marshal.Copy(pictureData.Scan0, rgbValues, 0, byteNum);
+            List<Task> taskList = new List<Task>();
+            for (int i = 0; i < verticalBlocks; i++)
+            {
+                for (int j = 0; j < horizontalBlocks; j++)
+                {
+                    int startwidth = j * width / horizontalBlocks;
+                    int endWidth = (j + 1) * width / horizontalBlocks;
+                    int startHeight = i * height / verticalBlocks;
+                    int endHeight = (i + 1) * height / verticalBlocks;
+                    taskList.Add(Task.Factory.StartNew(() => scene.Draw(startwidth, endWidth, startHeight, endHeight, picture.Height, picture.Width, ref rgbValues)));
+                }
+            }
+
+            foreach(var task in taskList)
             {
                 task.Wait();
             }

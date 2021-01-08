@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using Ray_Tracing.TaskHandling;
 
 namespace Ray_Tracing
 {
@@ -52,30 +49,16 @@ namespace Ray_Tracing
             picture = new Bitmap(width, height);
             var pictureData = picture.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, picture.PixelFormat);
             int byteNum = Math.Abs(pictureData.Stride) * picture.Height;
-            byte[] rgbValues = new byte[byteNum];
+            TaskManager manager = new TaskManager(byteNum);
+            Marshal.Copy(pictureData.Scan0, manager.ResultBuffer, 0, byteNum);
 
-            int horizontalBlocks = 4;
-            int verticalBlocks = 4;
-            Marshal.Copy(pictureData.Scan0, rgbValues, 0, byteNum);
-            List<Task> taskList = new List<Task>();
-            for (int i = 0; i < verticalBlocks; i++)
-            {
-                for (int j = 0; j < horizontalBlocks; j++)
-                {
-                    int startwidth = j * width / horizontalBlocks;
-                    int endWidth = (j + 1) * width / horizontalBlocks;
-                    int startHeight = i * height / verticalBlocks;
-                    int endHeight = (i + 1) * height / verticalBlocks;
-                    taskList.Add(Task.Factory.StartNew(() => scene.Draw(startwidth, endWidth, startHeight, endHeight, picture.Height, picture.Width, ref rgbValues)));
-                }
-            }
-
+            List<Task> taskList = manager.StartDrawingTasks(scene, height, width);
             foreach(var task in taskList)
             {
                 task.Wait();
             }
-            Marshal.Copy(rgbValues, 0, pictureData.Scan0, byteNum);
 
+            Marshal.Copy(manager.ResultBuffer, 0, pictureData.Scan0, byteNum);
             picture.UnlockBits(pictureData);
         }
 

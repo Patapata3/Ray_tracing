@@ -69,6 +69,8 @@
     <Compile Include="Shapes\Sphere.cs" />
     <Compile Include="Shapes\Plane.cs" />
     <Compile Include="Geometry\Vector.cs" />
+    <Compile Include="TaskHandling\BlockDivision.cs" />
+    <Compile Include="TaskHandling\TaskManager.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
